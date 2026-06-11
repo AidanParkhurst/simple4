@@ -1,14 +1,45 @@
 const nav = document.getElementById("nav");
+const navToggle = document.getElementById("navToggle");
+const navLinks = document.getElementById("navLinks");
 const form = document.getElementById("interestForm");
 const emailInput = document.getElementById("emailInput");
 const message = document.getElementById("formMessage");
+const mobileNavMedia = window.matchMedia("(max-width: 720px)");
+
+function syncNavToggle(isOpen) {
+  if (!nav || !navToggle) {
+    return;
+  }
+
+  nav.classList.toggle("is-open", isOpen);
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+  navToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+  document.body.classList.toggle("nav-open", isOpen && mobileNavMedia.matches);
+}
+
+function closeNav() {
+  syncNavToggle(false);
+}
+
+function toggleNav() {
+  if (!nav) {
+    return;
+  }
+
+  syncNavToggle(!nav.classList.contains("is-open"));
+}
 
 function onScroll() {
   if (!nav) {
     return;
   }
 
-  nav.classList.toggle("scrolled", window.scrollY > 32);
+  const scrollY = window.scrollY;
+  const mobileScrollProgress = Math.min(scrollY / 96, 1);
+
+  nav.classList.toggle("scrolled", scrollY > 32);
+  nav.style.setProperty("--mobile-nav-opacity", String(mobileScrollProgress));
+  nav.style.setProperty("--mobile-nav-shadow-opacity", String(0.24 * mobileScrollProgress));
 }
 
 function setMessage(text, type) {
@@ -26,6 +57,22 @@ function isValidEmail(email) {
 window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
 
+if (navToggle && navLinks) {
+  navToggle.addEventListener("click", toggleNav);
+
+  mobileNavMedia.addEventListener("change", (event) => {
+    if (!event.matches) {
+      closeNav();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeNav();
+    }
+  });
+}
+
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (event) => {
     const id = link.getAttribute("href");
@@ -39,6 +86,9 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     }
 
     event.preventDefault();
+    if (navLinks?.contains(link)) {
+      closeNav();
+    }
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });

@@ -93,6 +93,90 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
+const lightbox = document.getElementById("gameLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxCounter = document.getElementById("lightboxCounter");
+const lightboxClose = document.getElementById("lightboxClose");
+const lightboxPrev = document.getElementById("lightboxPrev");
+const lightboxNext = document.getElementById("lightboxNext");
+const browseGamesBtn = document.getElementById("browseGamesBtn");
+const gameShowcaseImage = document.getElementById("browseGamesImage");
+
+const gameScreens = [
+  { src: "assets/screens/solitaire-x.jpg", alt: "Solitaire X gameplay screenshot" },
+  { src: "assets/screens/21.jpg", alt: "21 Twenty One gameplay screenshot" },
+  { src: "assets/screens/yacht.jpg", alt: "Yacht! gameplay screenshot" },
+  { src: "assets/screens/american-popculture-trivia.jpg", alt: "American Pop Culture Trivia gameplay screenshot" },
+  { src: "assets/screens/gemzy.jpg", alt: "Gemzy gameplay screenshot" },
+];
+
+let currentSlide = 0;
+let lightboxLastFocused = null;
+
+function showSlide(index) {
+  currentSlide = (index + gameScreens.length) % gameScreens.length;
+  const shot = gameScreens[currentSlide];
+  lightboxImage.src = shot.src;
+  lightboxImage.alt = shot.alt;
+  lightboxCounter.textContent = `${currentSlide + 1} / ${gameScreens.length}`;
+}
+
+function onLightboxKeydown(event) {
+  if (event.key === "Escape") {
+    closeLightbox();
+  } else if (event.key === "ArrowRight") {
+    showSlide(currentSlide + 1);
+  } else if (event.key === "ArrowLeft") {
+    showSlide(currentSlide - 1);
+  }
+}
+
+function openLightbox(index) {
+  if (!lightbox || !lightboxImage) {
+    return;
+  }
+
+  lightboxLastFocused = document.activeElement;
+  showSlide(index);
+  lightbox.hidden = false;
+  document.body.classList.add("lightbox-open");
+  lightboxClose?.focus();
+  document.addEventListener("keydown", onLightboxKeydown);
+}
+
+function closeLightbox() {
+  if (!lightbox) {
+    return;
+  }
+
+  lightbox.hidden = true;
+  document.body.classList.remove("lightbox-open");
+  document.removeEventListener("keydown", onLightboxKeydown);
+  if (lightboxLastFocused instanceof HTMLElement) {
+    lightboxLastFocused.focus();
+  }
+}
+
+if (lightbox && lightboxImage) {
+  browseGamesBtn?.addEventListener("click", () => openLightbox(0));
+  gameShowcaseImage?.addEventListener("click", () => openLightbox(0));
+  gameShowcaseImage?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openLightbox(0);
+    }
+  });
+
+  lightboxClose?.addEventListener("click", closeLightbox);
+  lightboxPrev?.addEventListener("click", () => showSlide(currentSlide - 1));
+  lightboxNext?.addEventListener("click", () => showSlide(currentSlide + 1));
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+}
+
 if (form && emailInput && message) {
   form.addEventListener("submit", (event) => {
     event.preventDefault();

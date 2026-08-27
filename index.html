@@ -47,6 +47,7 @@
 
       <nav class="nav__links" id="navLinks" aria-label="Main navigation">
         <a href="#how-it-works">How it works</a>
+        <a href="#our-games">Our Games</a>
         <a href="#why-level4">What you get</a>
         <a href="#level4e-platform">Our Platform</a>
         <a href="#contact" class="nav__cta">Talk to Level4</a>
@@ -62,6 +63,15 @@
       <div class="hero__content container">
         <div class="hero__layout">
           <div class="hero__text">
+            <div class="hero__photo">
+              <img
+                src="assets/two_gamers.png"
+                alt="Two friends laughing while playing a Level4 trivia game on a phone"
+                width="867"
+                height="567"
+              />
+            </div>
+
             <h1 class="hero__headline">
               Fundraising </br>powered by </br><span class="hero__accent">games</span>
             </h1>
@@ -186,14 +196,49 @@
             </div>
 
             <p class="feature-panel__summary">
-              Our games are fun, and accessible on any device, making it easy to invite supporters.
-              A live scoreboard and the chance at prizes give people a reason to join again and again, turning competition into a powerful fundraising tool.
-              These fundraisers work, because they feel more like an event than a donation drive.
+              Our games are accessible on any device, and easy to share with supporters. A live scoreboard and the chance at prizes give people incentive to join again and again. Our fundraisers work, because they're interactive events, not just donation drives.
             </p>
           </div>
         </div>
 
         <p class="fit-note">Great fit for: foundations, clubs, companies, and community organizations.</p>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="our-games">
+      <div class="container">
+        <div class="game-showcase">
+          <div class="game-showcase__text">
+            <p class="section-eyebrow">A small selection of</p>
+            <h2 class="section-title game-showcase__title">Our Games</h2>
+            <p class="game-showcase__sub">
+              We have a wide range of games to choose from, and your fundraiser can feature one or ALL of them.
+              In particular, our trivia game can be fully customized for your organization. Not only will it be fun and engaging, it's also a great way for players to learn about your cause.
+            </p>
+            <button type="button" class="btn btn--primary game-showcase__cta" id="browseGamesBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18">
+                <circle cx="11" cy="11" r="7"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+              Browse our Collection
+            </button>
+          </div>
+
+          <div
+            class="game-showcase__image"
+            id="browseGamesImage"
+            role="button"
+            tabindex="0"
+            aria-label="Browse our game collection"
+          >
+            <img
+              src="assets/games.png"
+              alt="A collage of Level4 games including Cosmic Driftfire, Solitaire X, 21 Twenty One, Yacht, American Pop Culture Trivia, and Quad Rush Bingo"
+              width="673"
+              height="642"
+            />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -237,34 +282,23 @@
             Platform
           </h2>
           <p class="section-sub">
-            Level4E also operates a broader gaming platform, SkillSports. Check it out to get a sense of the
+            Level4E also operates a broader gaming platform. Check it out to get a sense of the
             product depth and operational expertise we'll bring to your fundraiser.
           </p>
         </div>
 
-        <div class="platform-panel split-layout">
-          <div class="platform-panel__content">
-            <div class="platform-panel__lead">
-              <p class="feature-panel__eyebrow">Platform snapshot</p>
-              <div class="platform-panel__image">
-                <img
-                  src="assets/skillsports.png"
-                  alt="SkillSports product screens showing game selection and gameplay"
-                  width="986"
-                  height="645"
-                />
-              </div>
-            </div>
+        <div class="split-layout split-layout--wide-media">
+          <div class="image-frame image-frame--wide">
+            <img
+              src="assets/skillsports_nobackground.png"
+              alt="Level4 platform product screens showing game selection and gameplay"
+              width="986"
+              height="646"
+            />
           </div>
 
-          <div class="platform-panel__media">
-            <img
-              src="assets/skillsportslogo.png"
-              alt="SkillSports"
-              class="platform-panel__wordmark"
-              width="934"
-              height="290"
-            />
+          <div class="feature-panel">
+            <p class="feature-panel__eyebrow">Platform snapshot</p>
             <ul class="feature-list">
               <li>35 live games, with more in development</li>
               <li>Works on any device — web and mobile</li>
@@ -279,7 +313,7 @@
               target="_blank"
               rel="noreferrer"
             >
-              Visit SkillSports.us
+              Visit the Level4 Platform
             </a>
           </div>
         </div>
@@ -342,6 +376,7 @@
 
       <nav class="footer__links" aria-label="Footer navigation">
         <a href="#how-it-works">How it works</a>
+        <a href="#our-games">Our Games</a>
         <a href="#why-level4">What you get</a>
         <a href="#level4e-platform">Level4E</a>
         <a href="#contact">Contact</a>
@@ -354,6 +389,32 @@
       </div>
     </div>
   </footer>
+
+  <div class="lightbox" id="gameLightbox" role="dialog" aria-modal="true" aria-label="Game screenshots" hidden>
+    <button type="button" class="lightbox__close" id="lightboxClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20">
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    </button>
+
+    <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous screenshot">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="22" height="22">
+        <path d="m15 18-6-6 6-6"></path>
+      </svg>
+    </button>
+
+    <div class="lightbox__stage">
+      <img src="" alt="" class="lightbox__image" id="lightboxImage" />
+      <p class="lightbox__counter" id="lightboxCounter" aria-hidden="true"></p>
+    </div>
+
+    <button type="button" class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next screenshot">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="22" height="22">
+        <path d="m9 18 6-6-6-6"></path>
+      </svg>
+    </button>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

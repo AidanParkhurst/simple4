@@ -95,6 +95,7 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
 const lightbox = document.getElementById("gameLightbox");
 const lightboxImage = document.getElementById("lightboxImage");
+const lightboxTitle = document.getElementById("lightboxTitle");
 const lightboxCounter = document.getElementById("lightboxCounter");
 const lightboxClose = document.getElementById("lightboxClose");
 const lightboxPrev = document.getElementById("lightboxPrev");
@@ -103,11 +104,11 @@ const browseGamesBtn = document.getElementById("browseGamesBtn");
 const gameShowcaseImage = document.getElementById("browseGamesImage");
 
 const gameScreens = [
-  { src: "assets/screens/solitaire-x.jpg", alt: "Solitaire X gameplay screenshot" },
-  { src: "assets/screens/21.jpg", alt: "21 Twenty One gameplay screenshot" },
-  { src: "assets/screens/yacht.jpg", alt: "Yacht! gameplay screenshot" },
-  { src: "assets/screens/american-popculture-trivia.jpg", alt: "American Pop Culture Trivia gameplay screenshot" },
-  { src: "assets/screens/gemzy.jpg", alt: "Gemzy gameplay screenshot" },
+  { src: "assets/screens/solitaire-x.jpg", alt: "Solitaire X gameplay screenshot", title: "Solitaire X" },
+  { src: "assets/screens/21.jpg", alt: "21 gameplay screenshot", title: "21" },
+  { src: "assets/screens/yacht.jpg", alt: "Yacht gameplay screenshot", title: "Yacht" },
+  { src: "assets/screens/american-popculture-trivia.jpg", alt: "American Pop Trivia gameplay screenshot", title: "American Pop Trivia" },
+  { src: "assets/screens/gemzy.jpg", alt: "Gemzy gameplay screenshot", title: "Gemzy" },
 ];
 
 let currentSlide = 0;
@@ -118,6 +119,9 @@ function showSlide(index) {
   const shot = gameScreens[currentSlide];
   lightboxImage.src = shot.src;
   lightboxImage.alt = shot.alt;
+  if (lightboxTitle) {
+    lightboxTitle.textContent = shot.title;
+  }
   lightboxCounter.textContent = `${currentSlide + 1} / ${gameScreens.length}`;
 }
 

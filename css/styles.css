@@ -217,8 +217,15 @@ body.lightbox-open {
   box-shadow: var(--shadow-lg);
 }
 
-.lightbox__counter {
+.lightbox__title {
   margin: 1rem 0 0;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.lightbox__counter {
+  margin: 0.35rem 0 0;
   color: rgba(255, 255, 255, 0.72);
   font-size: 0.88rem;
 }
@@ -903,6 +910,11 @@ body.lightbox-open {
 
 .split-layout--wide-media .image-frame img {
   width: min(100%, 720px);
+}
+
+.split-layout--wide-media .feature-panel {
+  align-self: center;
+  padding-bottom: 2rem;
 }
 
 .section-kicker {

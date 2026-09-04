@@ -1,6 +1,10 @@
 name: Upload to S3
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   upload:

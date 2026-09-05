@@ -1131,10 +1131,62 @@ body.lightbox-open {
   padding: 1rem 0 1.4rem;
 }
 
+.footer__bottom-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1.2rem;
+}
+
 .footer__bottom p {
   margin: 0;
   color: rgba(255, 255, 255, 0.56);
   font-size: 0.92rem;
+}
+
+.footer__legal {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.footer__legal a {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 0.92rem;
+}
+
+.footer__legal a:hover,
+.footer__legal a:focus-visible {
+  color: var(--white);
+}
+
+.imprint-section {
+  background: linear-gradient(180deg, var(--blue-950) 0%, var(--blue-900) 55%, var(--blue-800) 100%);
+  color: var(--white);
+  padding-block: calc(var(--nav-height) + 3.5rem) 5rem;
+  min-height: calc(100vh - var(--nav-height) - 220px);
+}
+
+.imprint-title {
+  margin-bottom: 2.5rem;
+  color: var(--white);
+}
+
+.imprint-blocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+}
+
+.imprint-block h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.9rem;
+  color: var(--cyan);
+}
+
+.imprint-block p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 @media (min-width: 640px) {
